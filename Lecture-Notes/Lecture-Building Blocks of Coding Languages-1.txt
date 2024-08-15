@@ -1,0 +1,175 @@
+# lecture Notes :Building Blocks of Coding Languages-1
+
+""" File Handling : Python supports file handling and allows users to handle files i.e., 
+                    to read and write files, along with many other file handling options, to operate on files.
+"""
+# Writing to a file:
+"""
+file = open("hello.txt","w") # Step 1 opening a file/ creating if not exists in write mode "w"
+file.write("hello world!\n")   # Step 2 Storing content in the file ex: hello world
+file.write("How is everyone\n")
+file.close()                    # Step 3 Closing the file safely 
+
+
+# Reading to a file:
+file = open("hello.txt","r") # Step 1 opening a file if exists in read mode "r"
+content = file.read().strip()        # Step 2 Assigning the contents of the file in a variable
+print(content)                       # Step 3 Printing contents of the file.
+
+# If we are using read() function we can read all the contents of the file at the same time but there is a way to
+read contents of the file line by line called readline()
+
+# Reading content line by line using readline()
+
+file = open("hello.txt","r")
+line1 = file.readline().strip()
+print(line1)
+
+
+# If we want read the contents of the file in a list then we can use function called readlines()
+
+file = open("hello.txt","r")
+list1 = file.readlines()
+print(list1)
+
+# Point to remember : If we write a file in write mode and try to re-write again by opening in the write mode then
+                      all the content written earlier will be lost and overwritten by the new content.
+example:
+file = open("hello.txt","w")
+file.write("hii!")
+file.close
+file = open("hello.txt","r")
+print(file.read())
+
+Output : hii
+
+# To avoid this problem we can use append mode "a"
+
+file = open("hello.txt","a")             # Step 1: Opening the file in append mode "a"
+file.write("My name is blah blah blah\n") # Step 2: Store content in the file by using write()
+file.close
+file = open("hello.txt","r")    # Reading the file
+print(file.read().strip)        # Printing the content
+file.close()
+
+# There are many modes available like :
+r+ : read/write
+w+ : write/read
+
+file = open("students.txt","w+")
+file.write("Gyanshu,23,IT")
+print(file.read())  # Output is empty because the file pointer is in the end of the line after writing the content
+
+To fix this problem we need to place the pointer at the given position 0 , we use seek() function which takes one arguement called index
+
+file = open("students.txt","w+")
+file.write("Gyanshu,23,IT")
+file.seek(0)           # All the contents from 0 index till the end will be printed
+print(file.read()) 
+
+# Working with (with block): by using with block we don't need to close the file using .close() 
+# and every block will exexute only in the given mode
+
+with open("hello.txt","a") as file1:
+    file1.write("Greetings\n")
+
+with open("hello.txt","r") as file1:
+    print(file1.read())
+
+# Error
+with open("hello.txt","r") as file1:
+    file1.write("Hello minions!") # We are trying to write while using read function and it'll give an
+    print(file1.read().strip())
+
+# Exception Handling : Exceptions are errors that occur at runtime when the program is being executed. 
+#                      They are usually caused by invalid user input or code that is invalid in Python. 
+#                      Exception handling allows the program to continue to execute even if an error occurs
+
+# exception handling in the case of fileNotFound Error!
+
+# example:
+file = open("newfile.txt","r")
+print(file.read())            # This will cause an error called file not found because there is no such file present in our local system name newfile.txt
+
+# Now handling error using exception handling: We will use try block
+
+try:
+    with open("newfile.txt",'r') as file1:
+        print(file1.read())
+except:
+    print("File not found!")  
+
+# By using above code the error is gone and the output printing a message : file not found. By using exception handling
+# these kind of error can be converted into a meaningfull message so it is easier to debug the code.
+
+# example 2
+try:
+    a = int(input())
+    b = int(input())
+    print(a+b)
+except:
+    print("Incorrect values! Enter only integers.") # This message will pop up if we try to given values other than integer 
+
+# Taking input from the user
+
+# 1. Taking input as string
+sentence = input() # we can add prompts like Enter your name inside the input() function : sentence = input("enter your name:")
+print(sentence)
+
+# 2. Taking input as integer
+nums_int = int(input("Enter integers: ")) # By using casting we are taking integer input from the user
+print(nums_int) 
+
+# remember if we are asking for in integer value we cannot give float values because floats are bigger than integers
+
+
+# 3. Taking input as float
+nums_float = float(input("Enter floats: "))
+print(nums_float)  # Even if we are giving integer values it will not show an error because floats can store integer values
+
+# 4. Taking multiple inputs using multiple variables
+x,y,z = input("Enter 3 inputs seperated by spaces: ").split() # if we dont use split here then the whitespaces will also be considered as values
+print(x,y,z)
+
+# 5. Taking input using loops
+sum = 0
+for i in range(5):
+    nums = int(input())
+    sum += nums
+print(sum)
+
+# 6. Taking input as a list : Using loops
+list1 = [] 
+for i in range(5): # suppose we are taking 5 numbers as input and appending every number one by one
+    nums = int(input(f"Enter {i+1}th number: "))
+    list1.append(nums)
+print(list1)
+
+# 7. Taking input using maps : So map() function returns a map object(which is an iterator) of the results after 
+#                                       applying the given function to each item of a given iterable (list, tuple etc.) 
+
+# Syntax : map(function , arguement) Function : this will be applied on the given argument one by one
+
+# Taking multiple inputs in multiple variables using maps
+x,y,z = map(int,input("Enter 3 inputs seperated by spaces: ").split()) 
+print(x,y,z)
+
+# Taking list input using map
+rollNumList = list(map(int,input("Enter roll numbers seperated by spaces:").split()))
+print(rollNumList) # After giving all the values when we press enter all the values which are converted into int are stored in a list named rollNumlist
+
+# Validating inputs if correct or not , if not ask for inputs again
+print("Enter your age: ")
+while True:
+    age=(input())
+    if(age.isdigit() and int(age)>0): # Checking if the input is a digit or not AND if the integer value of the age is greater than 0
+        age = int(age)
+        break                               # We are using break to come out of the loop to avoid infinite loop
+    else:
+        print("invalid input! please try again")
+print(age)
+
+# Caesar Cipher Concept: An introduction to Caesar's Cipher, a simple encryption technique where letters are shifted by a certain number of positions in the alphabet. The idea will be implemented in the next session.
+#                        This session laid foundational knowledge on handling data and files in programming, emphasizing practical Python applications and preparing for more complex coding challenges.
+
+"""
