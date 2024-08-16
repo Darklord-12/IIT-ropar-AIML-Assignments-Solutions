@@ -15,58 +15,85 @@ def evaluate(expression):
 # 2. Magical words
 
 def magical_words(word_list):
-  count=[]
-  l1 = word_list
-  for i in l1:
-    temp= 0
-    for j in i:
-        if(j =='a' or j =='e' or j =='i' or j =='o' or j =='u' or j =='A' or j =='E' or j =='I' or j == 'O' or j=='U'):
-            temp +=1
-    count.append(temp)
-  maximum = max(count)
-  l2=[]
-  for i in range(len(count)):
-    if(count[i] == maximum):
-        l2.append(l1[i])
-  print("Highest Vowels:",sorted(l2)[0])
+    
+    if(len(word_list) == 0):
+      print("""Highest Vowels: None
+Palindrome: None
+Duplicate Words: None""")
+    res = []
+    for i in word_list:
+       if( i == '' or i == " "):
+          continue
+       else:
+          res.append(i)    
+    if(len(res)==0):
+       print("""Highest Vowels: None
+Palindrome: None
+Duplicate Words: None""")
+    else:
+      count =[]
+      ls1 = res
+      for i in ls1:
+          temp = 0
+          for j in i:
+              if(j in 'aeiouAEIOU'):
+                  temp+=1
+          count.append(temp)
+      maxinum = max(count)
+      ls2 = []
+      for i  in range(len(count)):
+          if(count[i] == maxinum):
+              ls2.append(ls1[i])
+      print("Highest Vowels:",sorted(ls2)[0])
 
-# palindrome check
-  palindrome =[]
-  for i in l1:
-    temp = []
-    if(i==""):
-      continue
-    for j in i:
-        temp.append(j.lower())
-    if(temp == temp[::-1]):
-        palindrome.append(i)
-  sorted(set(palindrome))
-  if(len(palindrome)==0):
-    print("Palindrome: None",end="")
-  else: 
-    print("Palindrome: ",end="")
-    for i in range(len(palindrome)):
-        print(palindrome[i],end="")
-        if(len(palindrome) > 1):
-          if(i == len(palindrome)-1):
-            continue
+      # Check Palindrome
+      palindrome=[]
+      for i in ls1:
+          if(i == " " or i == ""):
+              continue
           else:
-            print(", " ,end="")
-  print()
-# Duplicate Words
-  newset = []
-  for i in l1:
-    newset.append(i.lower())
-  duplicates=[]
-  for j in newset:
-    if(newset.count(j)>1):
-        duplicates.append(j)
-  duplicates = sorted(set(duplicates))
-  if len(duplicates) < 1:
-    print("Duplicate Words: None",end="")
-  else:
-    print("Duplicate Words: ",end="")
-    for i in duplicates:
-        print(i ,end=" ")
+              temp = []
+              for j in i:
+                  temp.append(j.lower())
+              if(temp == temp[::-1]):
+                  palindrome.append(i)
+      sorted(set(palindrome))
+      if(len(palindrome) == 0):
+          print("Palindrome: None")
+      else:
+          print("Palindrome: ",end="")
+          for i in range(len(palindrome)):
+            if len(palindrome) == 1:
+              print(palindrome[i])
+            else:
+               print(palindrome[i],end="")
+               if(i == len(palindrome)-1):
+                      continue
+               else:
+                    print(", " ,end="")
+          if(len(palindrome)>1):
+             print()
+      # Duplicate Value
+      newset = []
+      for i in ls1:
+        newset.append(i.lower())
+      duplicates=[]
+      for j in newset:
+        if(newset.count(j)>1):
+            duplicates.append(j)
+      duplicates = sorted(set(duplicates))
+      if len(duplicates) < 1:
+        print("Duplicate Words: None",end="")
+      else:
+        print("Duplicate Words: ",end="")
+        for i in range(len(duplicates)):
+            if len(duplicates) == 1:
+              print(duplicates[i])
+            else:
+               print(duplicates[i],end="")
+               if(i == len(duplicates)-1):
+                      continue
+               else:
+                    print(", " ,end="")
         if(len(duplicates)>1):
-            print(',',end='')
+             print()
