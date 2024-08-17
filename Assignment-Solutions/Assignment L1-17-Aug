@@ -38,6 +38,33 @@ def factors_upto(n):
         dic[i]=factors(i)
     return dic
 
+# 3.
+import re
+from collections import Counter
+
+def get_most_frequent_word(lines):
+    # Initialize an empty list to store all words
+    words = []
+    
+    # Iterate over each line in the list
+    for line in lines:
+        # Remove punctuation and convert to lowercase
+        cleaned_line = re.sub(r'[^\w\s]', '', line).lower()
+        # Split the line into words and add to the list
+        words.extend(cleaned_line.split())
+    
+    # If there are no valid words, return the appropriate message
+    if not words:
+        return "No valid words found in the list."
+    
+    # Use Counter to count word frequencies
+    word_count = Counter(words)
+    
+    # Find the word with the maximum frequency
+    most_frequent_word = word_count.most_common(1)[0][0]
+    
+    return most_frequent_word
+
 # 4.
 def calculate_median(scores):
   '''
