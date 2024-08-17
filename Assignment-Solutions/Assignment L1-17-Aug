@@ -38,4 +38,21 @@ def factors_upto(n):
         dic[i]=factors(i)
     return dic
 
-# 3. 
+# 4.
+def calculate_median(scores):
+  '''
+  You are not required to take input for the scores.
+  You just need to use `scores` variable to complete
+  the program.
+  '''
+  # Write code here
+  scores = sorted(scores)
+  res = 0
+  if(len(scores)%2 == 0):
+      median = len(scores)//2
+      res = (scores[(median-1)] + scores[(median)] )/2
+        
+  else:
+      median = (len(scores)+1)//2
+      res = scores[median-1]
+  print(res)
