@@ -1,0 +1,23 @@
+# 1. Three Max, three Min Please.
+def solve(N,arr):
+    newArr = sorted(set(arr))
+    if(len(newArr) < 3):
+        print("Not Possible\nNot Possible")
+    else:
+        min_list = newArr[:3]
+        for i in min_list:
+            print(i,end=" ")
+        print()
+
+        max_list = newArr[-3:]
+        for i in max_list:
+            print(i,end=" ")
+        print()
+
+solve(8, [0,0,0,0])
+
+# 2. Factorial of Num
+import math
+def solve(N):
+    # Write code here
+    print(math.factorial(N))
