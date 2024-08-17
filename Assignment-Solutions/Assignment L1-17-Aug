@@ -14,4 +14,28 @@ def find_top_student(students_scores):
     else:
         return(students[0])
 
-# 2. 
+# 2. Its time to remember sets
+def factors(n):
+    # Complete code for this function
+    fac = []
+    for i in range(1,n+1):
+        if(n % i == 0 and i>0):
+           fac.append(i)
+    return fac 
+
+def common_factors(a, b):
+    # Complete code for this function
+    cf = []
+    for i in range(1,max(a,b)+1):
+        if(a%i==0 and b%i==0):
+            cf.append(i)
+    return cf
+
+def factors_upto(n):
+    # Complete code for this function
+    dic={}
+    for i in range(1,n+1):
+        dic[i]=factors(i)
+    return dic
+
+# 3. 
