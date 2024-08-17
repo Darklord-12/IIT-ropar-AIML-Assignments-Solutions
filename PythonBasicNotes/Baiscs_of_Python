@@ -1,0 +1,289 @@
+# Python Programming
+- Python is both compiled and interpreted , object oriented , high level Programming language with dynamic semantics.
+
+# Features of python :
+1. object oriented
+2. dynamically typed
+3. GUI Programming support
+4. free and open source
+5. Cross platform
+6. Extensible
+7. Large standard library
+8. Easy to learn and Expressive language
+
+# Application of python
+- Data Science
+- Web dev
+- Data engineering
+- AI & ML
+- Data Analytics
+
+Concepts: 
+
+# PRINT STATEMENT : To call a print function in python we just need to write print followed by paranthesis () and 
+                    values written inside quotation marks.
+example : print("Hello") 
+
+# Using Multiple lines in PRINT STATEMENT : There are 2 methods to write multiple lines:-
+1. Using Triple quotations
+2. Use \n to insert something in the next line.
+
+example 1 : print("""Hello
+                   My name is gyanshu!""")
+
+example 2 : print("Hello\n My name is gyanshu")
+
+# Comments : The line of code that are ignored by the interpreter during execution of the program.
+             It enhances the readability of the code.
+
+             They are of 2 types :
+             1. Single line : # This is a single line Comment
+             2. Multi-line  : """ This is a 
+                                 Multi-line comment""" 
+
+# Variables : They are placeholders , which can store some value or in simple words they are like a container that
+              holds some data inside it as a value.
+
+              example : a = 20 # where a is a variable contains a value which is 20 
+                               # a is also an identifier and 20 is a literal
+
+# Rules for writing a variable :-
+- Python is a case sensitive language,therefore the variable name are case sensitive as well.
+  example - apple = 1 , Apple = 1 # They both are different
+
+- Make sure not to use spaces while creating a variable. We can use '_' underscore to seperate the name while writing a variable.
+  example - nums of students = 40 # Error , nums_of_students = 40 # correct way
+
+- A variable name should never start with a numbers or special symbols.
+  example - @hello = 12 or 12students = 24
+
+# Data Types :-
+- Text type : strings (str)
+- Numeric type : Integer(int), Floating point(float),Complex numbers(1+2j)
+- Sequence type : List , tuple
+- Mapping type : Dictionaries (dict)
+- Set type : Set, Frozenset
+- Boolean type : Bool
+- Binary type : bytes , bytearrary, memory view
+
+Type of data that we are going to store in our variable called data type.
+
+# UserInput : To ask the input from the user. Default data type is string.
+
+- 1. Taking input as string :
+
+     sentence = input() # we can add prompts like Enter your name inside the input() function : sentence = input("enter your name:")
+     print(sentence)
+
+- 2. Taking input as integer :
+
+     nums_int = int(input("Enter integers: ")) # By using casting we are taking integer input from the user
+     print(nums_int) 
+
+     remember if we are asking for in integer value we cannot give float values because floats are bigger than integers
+
+- 3. Taking input as float
+     nums_float = float(input("Enter floats: "))
+     print(nums_float)  # Even if we are giving integer values it will not show an error because floats can store integer values
+
+- 4. Taking multiple inputs using multiple variables
+     x,y,z = input("Enter 3 inputs seperated by spaces: ").split() # if we dont use split here then the whitespaces will also be considered as values
+    print(x,y,z)
+
+- 5. Taking input using loops
+     sum = 0
+    for i in range(5):
+        nums = int(input())
+        sum += nums
+    print(sum)
+
+- 6. Taking input as a list : Using loops
+     list1 = [] 
+     for i in range(5): # suppose we are taking 5 numbers as input and appending every number one by one
+        nums = int(input(f"Enter {i+1}th number: "))
+        list1.append(nums)
+     print(list1)
+
+- 7. Taking input using maps : So map() function returns a map object(which is an iterator) of the results after 
+                             applying the given function to each item of a given iterable (list, tuple etc.) 
+
+     Syntax : map(function , arguement) Function : this will be applied on the given argument one by one
+
+     Taking multiple inputs in multiple variables using maps :
+
+     x,y,z = map(int,input("Enter 3 inputs seperated by spaces: ").split()) 
+     print(x,y,z)
+
+     Taking list input using map :
+
+     rollNumList = list(map(int,input("Enter roll numbers seperated by spaces:").split()))
+     print(rollNumList) # After giving all the values when we press enter all the values which are converted into int are stored in a list named rollNumlist
+
+- 8. Validating inputs if correct or not , if not ask for inputs again
+     print("Enter your age: ")
+     while True:
+        age=(input())
+        if(age.isdigit() and int(age)>0): # Checking if the input is a digit or not AND if the integer value of the age is greater than 0
+            age = int(age)
+            break                               # We are using break to come out of the loop to avoid infinite loop
+        else:
+            print("invalid input! please try again")
+     print(age)
+
+# Type Casting and subtypes :
+
+- Conversion of one datatype to another is called type casting.
+- There are 2 types of typecasting :
+- 1. Implicit type : Where python itself convert one datatype to another.
+     example : print("Enter a float") , input : 2 , output : 2.0
+
+- 2. Explicit type : Where user converts one datatype to another
+     example : print(int(2.5)) , output : 2
+
+# Operators and operands :
+
+- Operators indicate what operation is to be performed while operands indicates on what the action or the operation should be performed.
+  example : x + y = 0  :- Where x and y are operands and + is an Operator
+
+- Types of operators:
+
+- 1. Arithmetic Operators :
+- Addition '+'
+- Subtraction '-'
+- Multiplication '*'
+- Division '/'
+- Floor division '//'   # gives the integer value
+- Modulus '%'           # gives reminder
+- Exponentation '**'    # gives the square 
+
+- 2. Comparison Operators :
+- Less than '<'
+- Less than or equal to '<='
+- Greater than '>'
+- Greater than or equal to '>='
+- Equal to '=='
+- Not equal to '!='
+
+- 3. Logical Operators :
+- and  : True if both operands are True
+- or   : True if either of the operands is True
+- not  : Gives compliment of the bool result
+
+- 4. Assignment Operator :
+- They are used to assign values to a variable.
+- '=' , example : a = 2
+
+- 5. Identity Operators :
+- They are used to compare items to see if they are the same object with the same memory address.
+- Types :
+- 1. 'is' :- a = 123 , b = "123" print(a is b) , output : False
+- 2. 'is not' :- print(a is not b) , output : True
+
+- 6. Bitwise Operators : 
+- These operators are used to compare the binary numbers.
+- Types :
+- 1. AND '&' operator ( example : print(10 & 2) , output : 8  # binary of 10 is 1010 and 2 is 1000 so 1010 & 1000 == 1000)
+- 2. OR  '|' operator
+- 3. XOR '^' operator
+- 4. '<<' zero fill left shift ( example : 10 == 1010 , print(10>> 2) , output: 0010 # two zeros adding on the left and last two digits are removed)
+- 5. '>>' zero fill right shift
+
+- 7. Membership Operators :
+- They are used to check the presence of a Sequence in an object.
+- Types :-
+- 1. 'in'
+- 2. 'not in'
+  ( example: a = "hello" , print('e' in a), output: True)
+
+# CONDITIONAL STATEMENTS : They allows computer to execute a certain condition only if its True.
+
+- Types of conditional statements :
+- 1. if statements
+- 2. if-else statements
+- 3. if-elif-else statements
+- 4. Nested if statements
+- 5. Short hand if statements
+- 6. Short hand if-else statements
+
+# Syntax : 
+            if condition :
+                body of if
+
+# if-else : 
+            if condition :
+                body of if
+            else:
+                body of else
+
+# if-elif-else :
+                 if condition :
+                    body of if
+
+                 elif condition :
+                    body of elif
+                 else :
+                    body of else
+
+# Nested if : 
+                 if condition1 :
+                    if condition2 :
+                        body 
+
+# Short hand if :
+                         if condition : statement
+
+# Short hand if-else :
+                         body of if if condition else body of else 
+
+# Introduction to loops : Loops are used to repeat a task again and again until the condition is met.
+
+- Types of loops :
+- 1. For loop :
+  It is a loop that repeats something in a given range, the range has a starting point , ending point and a step/gap in it.
+  +1 is added to the ending point while defining a range
+
+  # Syntax : 
+            for i in range(condition, Step-size): # i represents the index
+                body of for loops
+            
+            for i in string/tuple/lists/Dictionaries : # i represents the value of given datatype
+                body of for loops
+
+- 2. While loop :
+  It executes till the given condition is True , In while loop increment is done inside the loop.
+
+  # Syntax :
+            # While loop
+            while (condition):
+                body of while
+                increment 
+            
+            # infinite while loop , break statement is used to come out of the while loop
+            while True :   
+                body of while loop
+
+# Dynamic and Static Binding
+
+- Dynamic Binding : where variables does not have a specific datatype its value can be reassigned.
+                    example : a = 5 , print(a) , a = "hello" , print(a) , output : 5 , hello
+                
+- Static Binding : Where variables have a specific datatype and its value cannot be reassigned.
+                    example : int a = 5 
+
+# Modules in Python : These are part of python library used by using import module_name.
+
+- 1. Math : math.() All the function will apprear which can be used in our program
+            import math
+            math.factorial(5)
+
+- 2. Keyword : Used to show all the Keyword used in python.
+               import keyword
+               Keyword.kwlist
+
+- 3. random :  Used to generate random numbers, if the range is not given then the default range is (0-1)
+               import random 
+               print(random.randint(1,10))
+
+- 4. Datetime : gives the current Datetime
+                import datetime
+                print(datetime.datetime.now())
