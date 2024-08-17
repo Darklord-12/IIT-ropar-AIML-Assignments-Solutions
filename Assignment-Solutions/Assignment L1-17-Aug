@@ -1,0 +1,17 @@
+# 1. Find top student IIT
+def find_top_student(students_scores):
+    # Complete this function
+    max_list= []
+    for i in students_scores:
+        max_list.append(students_scores.get(i))
+    max_num = max(max_list)
+    students=[]
+    for i in students_scores:
+        if(students_scores.get(i) == max_num):
+            students.append(i)
+    if(len(students)>1):
+        return(students)
+    else:
+        return(students[0])
+
+# 2. 
