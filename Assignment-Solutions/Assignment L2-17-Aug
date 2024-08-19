@@ -18,3 +18,17 @@ def vigenere_encrypt(plaintext, key):
 
             
     return(cipherText.upper())
+
+# 2. Decoding a cipher text
+def decode_ciphertext(ciphertext, key):
+  # Write your code here
+    letters="abcdefghijklmnopqrstuvwxyz"
+    cipherText = ciphertext.lower()
+    key1 = key.lower()
+    plaintext =""
+    for i in cipherText:
+        if(i.isalpha()):
+            plaintext += letters[key1.find(i)]
+        else:
+            plaintext+=i
+    print(plaintext.upper())
