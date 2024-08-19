@@ -1,0 +1,20 @@
+# 1. Vigenere Cipher encryption
+def vigenere_encrypt(plaintext, key):
+    # Complete this function
+    plain_text = plaintext.lower()
+    letters = "abcdefghijklmnopqrstuvwxyz"
+    key1 = key.lower()
+    cipherText = ""
+    key_counter =0
+    for i in plain_text:
+        if(i.isalpha()):
+            if(key_counter>=len(key1)):
+                key_counter%=len(key1)
+            cipherText += letters[(letters.find(i) + letters.find(key1[key_counter])) % 26]
+            key_counter+=1
+        else:
+            cipherText+=i
+           
+
+            
+    return(cipherText.upper())
