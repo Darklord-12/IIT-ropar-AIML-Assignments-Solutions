@@ -14,8 +14,6 @@ def solve(N,arr):
             print(i,end=" ")
         print()
 
-solve(8, [0,0,0,0])
-
 # 2. Factorial of Num
 import math
 def solve(N):
