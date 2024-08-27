@@ -66,4 +66,52 @@ if(n!=0):
 else:
   print()
 
-5. 
+5. Highest Salary Dictionary
+def highest_salary_per_employee(employees_salaries):
+    # Return dictionary as mentioned in the problem description.
+    salary_dic ={}
+    for i,j in employees_salaries.items():
+      salary_dic[i] = max(j)
+      
+    return salary_dic
+
+6. Biggest good digit
+def biggest_good_digit(num):
+    # Return the biggest good digit
+    ls=[]
+    for i in num:
+        if(num.count(i) >=2):
+            ls.append(i)
+    ls = list(set(ls))
+    if(len(ls)!=0):
+      return(max(ls))
+    else:
+      return '-1'
+
+7. Diamond pattern
+def print_diamond(n):
+  n = (2*n)-1
+  for row in range(0,n//2):
+    for col in range((n//2),row,-1):
+        print(" ",end="")
+    for col in range(0,row+1):
+        print("*",end="")
+    for col in range(1,row+1):
+        print("*",end="")
+    print()
+  for row in range(n//2,0-1,-1):
+    for col in range(n//2-1,row-1,-1):
+        print(" ",end="")
+    for col in range(row,-1,-1):
+        print("*",end="")
+    for col in range(row,0,-1):
+        print("*",end="")
+    print()
+
+8. Build array from permuatation
+def build_arrays(nums):
+    ans=[]
+    for i in range(0,len(nums)):
+        ans.append(nums[nums[i]])
+
+    return(ans)
