@@ -1,0 +1,69 @@
+1. Palindrome Dictionary
+import re
+def palindrome_dictionary(l):
+    # Return the dictionary as mentioned in the description
+    def pal_dictionary(s):
+        pal_dic=[]
+        count = 0
+        ls = s.split()
+        word_list = re.sub(r"[^\w\s]","",s.lower())
+        word_list = word_list.split()
+        for i in range (len(word_list)):
+            if(word_list[i] == word_list[i][::-1]):
+                count += 1
+            pal_dic.append(ls[i])
+        print(*pal_dic,count)
+        
+                
+    for i in l:
+        pal_dictionary(i)
+
+2. Calculate the score of the string
+def string_score(s):
+    # Initialize the score to 0
+    score = 0
+    
+    # Iterate through the string, stopping before the last character
+    for i in range(len(s) - 1):
+        # Calculate the ASCII difference between adjacent characters
+        difference = abs(ord(s[i]) - ord(s[i + 1]))
+        
+        # Add this difference to the total score
+        score += difference
+    
+    # Return the final score
+    return score
+
+3. Reach the apex
+def stairs(x):
+    if x == 0 or x == 1:
+        return 1
+    
+    # Initialize the first two steps
+    first = 1  # ways(0)
+    second = 1  # ways(1)
+    
+    # Iterate from step 2 to n
+    for i in range(2, x + 1):
+        current = first + second
+        first = second
+        second = current
+    
+    return second
+
+4. Concatenate the array
+def concatenate_array(n,nums):
+  if(n != 0):
+    ans=[]
+    ans += 2*nums
+    return ans
+
+n = int(input())
+if(n!=0):
+  input_str = input()
+  input_list = list(map(int, input_str.split()))
+  print(*(concatenate_array(n,input_list)))
+else:
+  print()
+
+5. 
